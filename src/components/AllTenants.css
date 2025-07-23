@@ -1,0 +1,107 @@
+.All-Tenants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background: white;
+  margin: 0 10px 10px 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px rgb(0, 0, 0);
+}
+
+.Tenants-card {
+  background: var(--glass);
+  color: var(--dark);
+  border-radius: 10px;
+  border: 1.5px solid var(--glass-border);
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 10px rgb(0, 0, 0) inset;
+}
+
+.Tenants-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1px 10px rgb(0, 0, 0);
+}
+
+.Tenants-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--dark);
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+}
+
+.tenant-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  display: block;
+  margin: 10px 20px 10px 8px;
+  object-fit: cover;
+  border: 1.5px solid var(--glass-border);
+}
+
+.user-data {
+  font-weight: 500;
+  color: var(--sub-heading);
+}
+
+.Tenants-card table {
+  width: 100%;
+}
+
+.Tenants-card td {
+  padding: 5px;
+  vertical-align: top;
+}
+
+
+.Tenants-card button {
+  color: var(--light);
+  border: 1px solid var(--glass-border);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.441);
+}
+
+.card-buttons {
+  display: flex;
+  gap: 60px;
+  margin-left: 0;
+  margin-top: 10px;
+  margin-left: 8px;
+}
+
+.Tenants-card #delete:hover {
+  background-color: rgb(185, 0, 0);
+  box-shadow: 0 1px 5px rgb(0, 0, 0) inset;
+}
+
+.Tenants-card #update:hover {
+  background-color: rgb(0, 143, 204);
+  box-shadow: 0 1px 5px rgb(0, 0, 0) inset;
+}
+
+#delete {
+  background: rgba(225, 1, 1, 0.913);
+}
+
+#update {
+  background: rgba(0, 143, 225, 0.74);
+}
+
+
+.Tenants-card button+button {
+  margin-left: 10px;
+}
