@@ -4,28 +4,36 @@
   font-weight: 400;
 
   --background: #e9edf1;
-  --primary: #6366f1;
+  --primary: #60a5fa;
   --boarder: rgb(0, 0, 0);
-  --glass: white;
-  --glass-border: rgba(10, 10, 10, 0.968);
+  --glass: rgba(30, 41, 59, 0.436);
+  --glass-border: rgba(228, 228, 228, 0.968);
   --sub-heading: rgb(37, 35, 35); 
   --light: rgba(255, 255, 255, 0.977);
   --dark: #000000;
-  --secondary: #8b5cf6;
-  --accent: #ec4899;
+  --secondary: rgba(31, 38, 135, 0.17);
+  --accent: #94a3b8;
 }
 
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: auto;
-  color: var(--light);
-  box-sizing: border-box;
-  /* background-image: url('/src/assets/image4.jpeg');
-  background-size: cover;
-  font-family: 'Segoe UI', sans-serif;
-  image-rendering: auto;
-  filter: sepia(10%) contrast(100%); */
-  background: var(--background);
   font-family: var(--font-family, system-ui, Avenir, Helvetica, Arial, sans-serif);
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url('/src/assets/image1.jpeg');
+  /* background-size: cover; */
+}
+
+.main-content {
+  flex: 1 0 auto;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

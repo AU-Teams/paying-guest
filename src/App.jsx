@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
-import './App.css'
 import Header from './components/Header';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -18,24 +17,28 @@ import Profile from "./components/Profile";
 
 function App() {
     return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/password" element={<ForgotPassword />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/addtenant" element={<AddTenants />} />
-                <Route path="/alltenants" element={<AllTenants />} />
-                <Route path="/policy" element={<Policy />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/update/:id" element={<UpdateTenants />} />
-                <Route path="/profile" element={<Profile />} />
-            </Routes>
-            <Footer />
-        </BrowserRouter>
+        <div className="app-layout">
+            <BrowserRouter>
+                <Header />
+                <main className="main-content">
+                    <Routes>
+                        <Route path="/" element={<Landing />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/password" element={<ForgotPassword />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/addtenant" element={<AddTenants />} />
+                        <Route path="/alltenants" element={<AllTenants />} />
+                        <Route path="/policy" element={<Policy />} />
+                        <Route path="/terms" element={<Terms />} />
+                        <Route path="/update/:id" element={<UpdateTenants />} />
+                        <Route path="/profile" element={<Profile />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </BrowserRouter>
+        </div>
     );
 }
 

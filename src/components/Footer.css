@@ -1,78 +1,68 @@
 .footer {
-    margin: 10px;
-    padding: 20px;
-    border-radius: 5px;
-    color: var(--dark);
-    background: var(--glass);
-    border: 1.5px solid var(--glass-border);
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
+  margin: 0;
+  padding: 24px 0 12px 0;
+  border-radius: 0;
+  color: var(--light);
+  background: var(--glass);
+  border-top: 1.5px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  position: static;
+  width: 100%;
 }
 
 .footer-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5vw;
 }
 
 .footer-logo {
-    position: relative;
-    margin-top: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: auto;
-    font-size: 2rem;
-    font-weight: bold;
-    justify-content: flex-start;
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: var(--light);
 }
 
 .footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
 }
 
 .footer-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
+  text-decoration: none;
+  color: var(--light);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
 }
 
 .copy-right {
-    text-align: center;
-    color: var(--sub-heading);
-    font-size: 0.9rem;
-    border-top: 1.5px solid var(--glass-border);
-    padding: 10px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--glass-border);
+  padding: 8px 0 0 0;
 }
 
 @media (max-width: 600px) {
-    .footer {
-        padding: 10px;
-    }
-
-    .footer-section {
-        flex-direction: column;
-        padding: 0px;
-    }
-
-    .footer-logo {
-        font-size: 1.5rem;
-    }
-
-    .footer-links {
-        flex-direction: row;
-        gap: 2;
-        margin: 10px 0;
-    }
-    
-    .footer-links a {
-        text-decoration: none;
-        color: var(--text);
-        font-weight: 500;
-        font-size: 15px;
-    }
+  .footer-section {
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px 2vw;
+  }
+  .footer-logo {
+    font-size: 1.4rem;
+  }
+  .footer-links {
+    gap: 12px;
+    font-size: 0.95rem;
+  }
 }

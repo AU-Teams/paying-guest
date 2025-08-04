@@ -2,19 +2,19 @@
     margin: 20px auto;
     padding: 20px;
     background: var(--glass);
-    color: var(--dark);
+    color: var(--light);
     border: 1.5px solid var(--glass-border);
     width: 400px;
     min-width: 200px;
     border-radius: 10px;
     align-self: center;
     text-align: center;
-    box-shadow: 0 1px 10px rgb(0, 0, 0) inset;
+    /* box-shadow: 0 1px 10px rgb(0, 0, 0) inset; */
 }
 
-.Add-Tenants:hover {
+/* .Add-Tenants:hover {
     box-shadow: 0 1px 10px rgb(0, 0, 0);
-}
+} */
 
 .Add-Tenants form {
     display: flex;
@@ -24,20 +24,28 @@
 
 .Add-Tenants label {
     margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 .Add-Tenants select {
     padding: 10px;
-    border-radius: 3px;
+    background: transparent;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 5px;
+    color: rgb(140, 140, 140);
 }
 
 .Add-Tenants input {
-    padding: 8px;
+    padding: 10px;
+    background: transparent;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 5px;
+    color: var(--light);
 }
 
 .choose-pic {
     border: 1px solid var(--glass-border);
-    background: white;
+    background: transparent;
     color: black;
     border-radius: 3px;
 }
@@ -45,23 +53,23 @@
 .Add-Tenants button {
     border: 1px solid var(--glass-border);
     background: transparent;
-    color: var(--dark);
+    color: var(--light);
     font-weight: bold;
     padding: 10px;
     margin-top: 30px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 1px 5px rgb(0, 0, 0);
+    /* box-shadow: 0 1px 5px rgb(0, 0, 0); */
 }
 
 .Add-Tenants button:hover {
     background: var(--primary);
     color: var(--light);
-    box-shadow: 0 1px 5px rgb(0, 0, 0) inset;
+    /* box-shadow: 0 1px 5px rgb(0, 0, 0) inset; */
 }
 
 @media (max-width: 600px) {
   .Add-Tenants {
-    width: 320px;
+    width: 280px;
   }
 }

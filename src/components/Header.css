@@ -1,10 +1,8 @@
 .header {
     padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
     background: var(--glass);
-    color: var(--dark);
-    border: 1.5px solid var(--glass-border);
+    color: var(--light);
+    border-bottom: 1.5px solid var(--glass-border);
 }
 
 .header-section {
@@ -16,6 +14,7 @@
 .header .logo {
     font-size: 2rem;
     font-weight: bold;
+    color: var(--light);
 }
 
 /* Toggle Icon */
@@ -29,7 +28,7 @@
 .toggle-icon span {
   height: 3px;
   width: 25px;
-  background: black;
+  background: var(--light);
   transition: all 0.3s ease;
 }
 
@@ -56,7 +55,7 @@
     padding: 2px 5px;
     border: 1px solid var(--glass-border);
     text-decoration: none;
-    color: var(--dark);
+    color: var(--light);
     border-radius: 5px;
     box-shadow: 0 1px 5px rgb(0, 0, 0);
     font-weight: 500;
@@ -75,15 +74,18 @@
     display: flex;
   }
 
+  .header {
+    margin-bottom: 25px;
+  }
+
   .header-nav {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
-    top: 60px;
-    right: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
+    top: 70px; left: 0; right: 0;
+    background: var(--glass);
+    padding: 10px;
+    justify-content: space-evenly;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     z-index: 10;
   }
@@ -93,7 +95,9 @@
   }
 
   .header-nav a {
-    margin: 10px 0;
-    font-size: 16px;
+    margin: 5px 0;
+    font-size: 12px;
+    padding: 3px 2px;
+    font-weight: 400;
   }
 }

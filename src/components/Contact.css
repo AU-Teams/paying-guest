@@ -6,15 +6,15 @@
     width: 300px;
     min-width: 200px;
     border-radius: 10px;
-    color: var(--dark);
+    color: var(--light);
     align-self: center;
     text-align: center;
-    box-shadow: 0 1px 10px rgb(0, 0, 0) inset;
+    /* box-shadow: 0 1px 10px rgb(0, 0, 0) inset; */
 }
 
-.contact-container:hover {
+/* .contact-container:hover {
     box-shadow: 0 1px 10px rgb(0, 0, 0);
-}
+} */
 
 .contact-container form {
     display: flex;
@@ -24,39 +24,54 @@
 
 .contact-container label {
     margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 .contact-container input {
-    padding: 8px;
+    padding: 10px;
+    background: transparent;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 5px;
+    color: var(--light);
 }
 
 .contact-container textarea {
     padding: 8px;
+    background: transparent;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 5px;
+    color: var(--light);
 }
 
-.contact-container textarea::content{
+.contact-container textarea::content {
     border: none;
 }
 
 .contact-container button {
     border: 1px solid var(--glass-border);
-    background: transparent;
+    background: var(--glass);
     padding: 10px;
     margin-top: 30px;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 1px 5px rgb(0, 0, 0);
+    color: var(--light);
+    /* box-shadow: 0 1px 5px rgb(0, 0, 0); */
 }
 
 .contact-container button:hover {
     background: var(--primary);
     color: var(--light);
-    box-shadow: 0 1px 5px rgb(0, 0, 0) inset;
+    /* box-shadow: 0 1px 5px rgb(0, 0, 0) inset; */
 }
 
 @media (max-width: 600px) {
-  .contact-container {
-    width: 320px;
-  }
+    .contact-container {
+        width: 280px;
+        padding: 20px;
+    }
+
+    .contact-container h2 {
+        font-size: 1.5rem;
+    }
 }

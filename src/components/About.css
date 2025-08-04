@@ -10,21 +10,21 @@
   background: var(--glass);
   border: 1.5px solid var(--glass-border);
   padding: 30px;
-  color: var(--dark);
+  color: var(--light);
   border-radius: 5px;
   font-family: 'Segoe UI', sans-serif;
-  box-shadow: 0 1px 10px rgb(0, 0, 0) inset;
+  /* box-shadow: 0 1px 10px rgb(0, 0, 0) inset; */
 }
 
-.about-container:hover {
+/* .about-container:hover {
   transform: translateY(-8px);
   box-shadow: 0 1px 15px rgb(0, 0, 0);
-}
+} */
 
 .about-container h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: var(--dark);
+  color: var(--light);
   text-align: center;
 }
 
