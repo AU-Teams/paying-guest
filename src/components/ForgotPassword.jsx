@@ -15,18 +15,19 @@ function ForgotPassword() {
     e.preventDefault();
     setError('');
     setMessage('');
-
     if (email.trim() === '') {
       setError('Please enter your email.');
       return;
     }
-
     try {
-      const res = await fetch(`http://localhost:3000/users?email=${email}`);
+      const res = await fetch('http://localhost:5000/api/auth/check-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
       const data = await res.json();
-
-      if (data.length > 0) {
-        setUserFound(true); // Show password form
+      if (data.exists) {
+        setUserFound(true);
         setMessage('User found. Enter new password below.');
       } else {
         setError('User not found.');
@@ -41,27 +42,16 @@ function ForgotPassword() {
     e.preventDefault();
     setError('');
     setMessage('');
-
     if (newPassword.trim().length < 6) {
       setError('Password must be at least 6 characters.');
       return;
     }
-
     try {
-      // Get user by email again
-      const res = await fetch(`http://localhost:3000/users?email=${email}`);
-      const data = await res.json();
-      const user = data[0];
-
-      // Update password
-      const updateRes = await fetch(`http://localhost:3000/users/${user.id}`, {
+      const updateRes = await fetch('http://localhost:5000/api/auth/reset-password', {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ password: newPassword }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: newPassword })
       });
-
       if (updateRes.ok) {
         setMessage('Password updated successfully. Please log in.');
         setUserFound(false);

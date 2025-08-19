@@ -1,40 +1,39 @@
 import './Login.css';
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { AuthContext } from '../AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const { login } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const loginHandler = async (e) => {
     e.preventDefault();
-
-    if (username.trim() === '' || password.trim() === '') {
-      setError('Please enter both username and password.');
+    if (email.trim() === '' || password.trim() === '') {
+      setError('Please enter both email and password.');
       return;
     }
-
     try {
-      const res = await fetch(`http://localhost:3000/users?username=${username}&password=${password}`);
-      const data = await res.json();
-
-      if (data.length > 0) {
-        const user = data[0];
-        localStorage.setItem('token', 'true');
-        localStorage.setItem('user', JSON.stringify(user));
-        login();
-        navigate('/');
-      } else {
-        setError('Invalid username or password.');
-      }
+      const res = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password
+      });
+      const { user, token } = res.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      login();
+      navigate('/profile');
     } catch (err) {
-      console.error(err);
-      setError('Something went wrong. Please try again later.');
+      setError(err.response?.data?.message || 'Invalid email or password.');
     }
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:5000/api/auth/google';
   };
 
   return (
@@ -43,12 +42,12 @@ const Login = () => {
         <h2>User Login</h2>
         {error && <div className="error">{error}</div>}
         <form onSubmit={loginHandler} className="login-form">
-          <label>Username*</label>
+          <label>Email*</label>
           <input
-            type="text"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -62,10 +61,13 @@ const Login = () => {
           />
 
           <button type="submit">Login</button>
+          <button type="button" className="google-login-btn" onClick={handleGoogleLogin}>
+            Login with Google
+          </button>
 
           <div className="extra-links">
             <p><Link to="/password">Forgot Password?</Link></p>
-            <p>Don't have an account? <Link to="/Signup">Sign-up</Link></p>
+            <p>Don't have an account? <Link to="/signup">Sign-up</Link></p>
           </div>
         </form>
       </div>

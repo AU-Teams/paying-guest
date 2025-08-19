@@ -6,7 +6,7 @@
   --background: #e9edf1;
   --primary: #60a5fa;
   --boarder: rgb(0, 0, 0);
-  --glass: rgba(30, 41, 59, 0.436);
+  --glass: rgba(30, 41, 59, 0.678);
   --glass-border: rgba(228, 228, 228, 0.968);
   --sub-heading: rgb(37, 35, 35); 
   --light: rgba(255, 255, 255, 0.977);
@@ -19,6 +19,9 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: url('/src/assets/image1\ \(1\).jpg'); 
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: var(--font-family, system-ui, Avenir, Helvetica, Arial, sans-serif);
 }
 
@@ -26,8 +29,6 @@ html, body, #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('/src/assets/image1.jpeg');
-  /* background-size: cover; */
 }
 
 .main-content {

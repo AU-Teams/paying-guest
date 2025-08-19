@@ -15,20 +15,19 @@ function Contact() {
   
   const btnHandler=(e)=>{
     e.preventDefault();
-    const playload = {name,email,mess};
-    axios.post('http://localhost:3000/contact',playload)
-    .then(()=>{
-      alert('Message sent!!')
-      console.log("data saved")
-      setName('')
-      setEmail('')
-      setMess('')
-      navigate('/');
-    })
-    .catch(()=>{
-      console.log('error')
-    })
-  }
+    const payload = { name, email, message: mess };
+    axios.post('http://localhost:5000/api/contact', payload)
+      .then(() => {
+        alert('Message sent!');
+        setName('');
+        setEmail('');
+        setMess('');
+        navigate('/');
+      })
+      .catch(() => {
+        alert('Failed to send message.');
+      });
+  };
 
   return (
     <div className="contact-container">

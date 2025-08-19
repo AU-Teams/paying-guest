@@ -11,14 +11,18 @@ const UpdateTenants = () => {
   const [photo, setPhoto] = useState('');
   const [address, setAddress] = useState('');
   const [originalData, setOriginalData] = useState({});
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/content/${id}`)
+    const token = localStorage.getItem('token');
+    axios.get(`http://localhost:5000/api/tenants/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((res) => {
-        const data = res.data;
-        setOriginalData(data); // Save original data to compare later
+        const data = res.data.tenant;
+        setOriginalData(data);
         setName(data.name);
         setRoom(data.room);
         setRent(data.rent);
@@ -40,6 +44,12 @@ const UpdateTenants = () => {
   const photoHandler = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 1024 * 1024) {
+        setError('Photo size must be less than 1MB');
+        setPhoto('');
+        return;
+      }
+      setError('');
       const reader = new FileReader();
       reader.onloadend = () => {
         setPhoto(reader.result);
@@ -48,29 +58,34 @@ const UpdateTenants = () => {
     }
   };
 
-  const updateHandler = (e) => {
+  const updateHandler = async (e) => {
     e.preventDefault();
-
+    if (photo && error) {
+      alert(error);
+      return;
+    }
     const payload = { name, room, rent, roomtype, photo, address };
-
+    const token = localStorage.getItem('token');
     // Check if any data changed
     const isChanged = Object.keys(payload).some(
       (key) => payload[key] !== originalData[key]
     );
-
     if (!isChanged) {
       alert('No changes made.');
       return;
     }
-
-    axios.put(`http://localhost:3000/content/${id}`, payload)
-      .then(() => {
-        alert('Tenant updated successfully!');
-        navigate('/alltenants');
-      })
-      .catch((err) => {
-        console.log('Error updating tenant:', err);
+    try {
+      await axios.put(`http://localhost:5000/api/tenants/${id}`, payload, {
+        headers: { Authorization: `Bearer ${token}` }
       });
+      alert('Tenant updated successfully!');
+      setError('');
+      navigate('/alltenants');
+    } catch (err) {
+      console.log('Error updating tenant:', err);
+      setError('Failed to update tenant.');
+      alert('Failed to update tenant.');
+    }
   };
 
   const cancelHandler = (e) => {
@@ -82,6 +97,7 @@ const UpdateTenants = () => {
     <div className='Add-Tenants'>
       <h2>Update Tenant</h2>
       <form onSubmit={updateHandler}>
+        {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
         <label>Name*</label>
         <input type="text" value={name} onChange={nameHandler} placeholder="Update Tenant Name" required />
 

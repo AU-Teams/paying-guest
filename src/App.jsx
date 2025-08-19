@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 import Header from './components/Header';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -14,8 +15,10 @@ import Policy from "./components/Policy"
 import Terms from "./components/Terms"
 import Landing from "./components/Landing";
 import Profile from "./components/Profile";
+import OAuthSuccess from "./components/OAuthSuccess";
 
 function App() {
+    const { isLoggedIn } = useContext(AuthContext);
     return (
         <div className="app-layout">
             <BrowserRouter>
@@ -25,15 +28,16 @@ function App() {
                         <Route path="/" element={<Landing />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/password" element={<ForgotPassword />} />
-                        <Route path="/signup" element={<Signup />} />
-                        <Route path="/addtenant" element={<AddTenants />} />
-                        <Route path="/alltenants" element={<AllTenants />} />
                         <Route path="/policy" element={<Policy />} />
                         <Route path="/terms" element={<Terms />} />
-                        <Route path="/update/:id" element={<UpdateTenants />} />
-                        <Route path="/profile" element={<Profile />} />
+                        {!isLoggedIn && <Route path="/login" element={<Login />} />}
+                        {!isLoggedIn && <Route path="/signup" element={<Signup />} />}
+                        {isLoggedIn && <Route path="/addtenant" element={<AddTenants />} />}
+                        {isLoggedIn && <Route path="/alltenants" element={<AllTenants />} />}
+                        {isLoggedIn && <Route path="/update/:id" element={<UpdateTenants />} />}
+                        {isLoggedIn && <Route path="/profile" element={<Profile />} />}
+                        {isLoggedIn && <Route path="/password" element={<ForgotPassword />} />}
+                        <Route path="/oauth-success" element={<OAuthSuccess />} />
                     </Routes>
                 </main>
                 <Footer />

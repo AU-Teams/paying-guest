@@ -28,7 +28,7 @@
 }
 
 .profile strong {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .profile label {
@@ -46,6 +46,10 @@
   margin-bottom: 15px;
   border: 1px solid var(--glass-border);
   border-radius: 5px;
+}
+
+.profile input::placeholder {
+  color: var(--light);
 }
 
 .profile-btn {

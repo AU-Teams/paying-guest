@@ -43,6 +43,11 @@
     color: var(--light);
 }
 
+.contact-container input::placeholder,
+.contact-container textarea::placeholder {
+    color: var(--light);
+}
+
 .contact-container textarea::content {
     border: none;
 }

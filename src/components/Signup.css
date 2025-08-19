@@ -44,6 +44,10 @@ margin-bottom: 5px;
     color: var(--light);
 }
 
+.register-form input::placeholder {
+  color: var(--light);
+}
+
 .register-form button {
   width: 100%;
   padding: 12px;

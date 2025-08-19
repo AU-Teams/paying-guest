@@ -11,6 +11,7 @@ const AddTenants = () => {
   const [photo, setPhoto] = useState('');
   const [roomtype, setRoomType] = useState('');
   const [address, setAddress] = useState('');
+  const [error, setError] = useState('');
 
   const { addtenants } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -24,6 +25,12 @@ const AddTenants = () => {
   const photoHandler = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 1024 * 1024) {
+        setError('Photo size must be less than 1MB');
+        setPhoto('');
+        return;
+      }
+      setError('');
       const reader = new FileReader();
       reader.onloadend = () => {
         setPhoto(reader.result);
@@ -32,32 +39,40 @@ const AddTenants = () => {
     }
   };
 
-  const btnHandler = (e) => {
+  const btnHandler = async (e) => {
     e.preventDefault();
-
+    if (photo && error) {
+      alert(error);
+      return;
+    }
     const payload = { name, room, rent, roomtype, photo, address };
-
-    axios.post('http://localhost:3000/content', payload)
-      .then(() => {
-        alert('Data saved successfully!');
-        setName('');
-        setRoom('');
-        setRent('');
-        setRoomType('');
-        setPhoto('');
-        setAddress('');
-        addtenants();
-      })
-      .catch((err) => {
-        console.log('Error saving data:', err);
-      })
+    const token = localStorage.getItem('token');
+    try {
+      await axios.post('http://localhost:5000/api/tenants', payload, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert('Tenant added successfully!');
+      setName('');
+      setRoom('');
+      setRent('');
+      setRoomType('');
+      setPhoto('');
+      setAddress('');
+      setError('');
+      addtenants && addtenants();
       navigate('/alltenants');
-  }
+    } catch (err) {
+      console.log('Error saving data:', err);
+      setError('Failed to add tenant.');
+      alert('Failed to add tenant.');
+    }
+  };
 
   return (
     <div className='Add-Tenants'>
       <h1>Add Tenants</h1>
       <form onSubmit={btnHandler}>
+        {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
         <label>Name*</label>
         <input type="text" value={name} onChange={nameHandler} placeholder='Enter Tenant Name' required />
 

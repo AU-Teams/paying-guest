@@ -2,6 +2,7 @@
   max-width: 1000px;
   margin: 20px auto 20px auto;
   padding: 40px 20px;
+  color: var(--light);
   background: var(--glass);
   border-radius: 5px;
   border: 1.5px solid var(--glass-border);
@@ -10,7 +11,7 @@
 }
 
 .policy-container h2{
-  color: var(--dark);
+  color: var(--light);
 }
 
 .section {
@@ -20,7 +21,8 @@
 .section-title {
   font-size: 28px;
   font-weight: bold;
-  border-bottom: 2px solid #007bff;
+  color: var(--light);
+  border-bottom: 2px solid var(--glass-border);
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -28,10 +30,12 @@
 .section-description {
   margin-bottom: 15px;
   font-size: 16px;
+  color: var(--light);
   line-height: 1.6;
 }
 
 .section-list {
+  color: var(--light);
   padding-left: 20px;
 }
 

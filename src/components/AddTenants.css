@@ -35,6 +35,10 @@
     color: rgb(140, 140, 140);
 }
 
+.Add-Tenants option {
+    color: var(--dark);
+}
+
 .Add-Tenants input {
     padding: 10px;
     background: transparent;
@@ -48,6 +52,11 @@
     background: transparent;
     color: black;
     border-radius: 3px;
+}
+
+.Add-Tenants input::placeholder,
+.Add-Tenants select {
+    color: var(--light);
 }
 
 .Add-Tenants button {
